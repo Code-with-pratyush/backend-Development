@@ -1,8 +1,16 @@
 import connectDB from "./db/db.js";
 
-
-connectDB();
-
+//is a async method and retuurns a promise
+connectDB()
+.then(()=>{
+  app.listen(8000,()=>{
+    console.log(`Server Listening on port 8000`)
+  })
+})
+.catch((error)=>{
+  console.log("MongoDB connection failed",error);
+  throw error;
+});
 
 
 
